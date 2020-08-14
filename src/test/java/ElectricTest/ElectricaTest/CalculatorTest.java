@@ -9,7 +9,7 @@ import org.junit.Test;
 public class CalculatorTest {
     @Test
     public static void main(String[] args) {
-        CeilingLight ceilingLight = new CeilingLight(333
+        CeilingLight ceilingLight = new CeilingLight(36
         );
         ceilingLight.infoCeilingLight();
     }

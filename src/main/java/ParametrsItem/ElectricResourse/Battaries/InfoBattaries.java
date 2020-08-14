@@ -6,12 +6,12 @@ public class InfoBattaries {
     private int largeHQM = 50;
     private int capacityLarge = 24000;
 
-    private int capacityMedium = 9000;
     private int maxPowerOutputMedium = 50 ;
+    private int capacityMedium = 9000;
     private int mediumHQM = 25;
 
-    private int capacitySmall = 150;
     private int maxPowerOutputSmall = 10 ;
+    private int capacitySmall = 150;
     private int smallHQM = 10;
 
 

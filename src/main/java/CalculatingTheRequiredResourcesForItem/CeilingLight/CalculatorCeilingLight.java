@@ -1,60 +1,37 @@
 package CalculatingTheRequiredResourcesForItem.CeilingLight;
 
-import Item.ElectricItem.ElectricalСonsumers.CeilingLight;
-import Item.ElectricItem.Switch.Button;
-import Item.ElectricItem.Switch.SmartSwitch;
-import Item.ElectricItem.Switch.Switch;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
+import CalculatingTheRequiredResourcesForItem.CeilingLight.logics.BatteryCalculator;
+import Item.ElectricItem.ElectricalСonsumers.CeilingLight;
+import Item.ElectricItem.Switch.Switch;
 
 public class CalculatorCeilingLight {
 
-   public static void main(String[] args) {
-        int calculatorLight = 6666;
-        int calclutorButton;
+    public static void main(String[] args) {
 
-
-        CeilingLight ceilingLight = new CeilingLight(calculatorLight, true);
+        CeilingLight ceilingLight = new CeilingLight(550);
         ceilingLight.infoCeilingLight();
 
-       int calculatorEnergy = ceilingLight.getConsumption();
+        BatteryCalculator batteryCalculator = new BatteryCalculator(ceilingLight.getConsumption());
+        System.out.println("Для подключения  " + ceilingLight.getCount() +" электрических ламп, вам потребуется :");
+        batteryCalculator.infoBatteryCalculator();
 
-       int a = calculatorEnergy % 100;
-
-       System.out.println(a);
-
-       //Записывает количество Switch для подключения
-
-       int quantitySwitch = 0;
-
-       if (calculatorEnergy <= 0 ) {
-           System.out.println("Не верное число для подсчета");
-       } else if (calculatorEnergy >= 1 && calculatorEnergy <= 98 ) {
-           quantitySwitch = 1;
-       } else if (calculatorEnergy > 98 && calculatorEnergy <= 196 ) {
-           quantitySwitch = 2;
-       } else if (calculatorEnergy >196) {
-           System.out.println("В клановый дом, столько лампочек не требуется");
-           System.out.println("Введите значение ближе к реальности");
-           System.exit(0);
-       }
+        Switch aSwitch = new Switch(batteryCalculator.getCountAllBattery());
 
 
-       //Ввыводит на экран, какое количество элетроники требуется для подключения n ламп
-
-        if(calculatorLight == 1 ) {
-            System.out.println("Для подключения " + calculatorLight + " лампы, потребуется : " + new Button(quantitySwitch).getCount() + " кнопка или " + new Switch(quantitySwitch).getCount()
-                    + " переключатель или " + new SmartSwitch(quantitySwitch).getCount() + " умный переключатель" );
-        } else if (calculatorLight >= 1) {
-            System.out.println("Для подключения " + calculatorLight + " ламп, потребуется : " + new Button(quantitySwitch).getCount() + " кнопки или " + new Switch(quantitySwitch).getCount()
-                    + " переключателя или " + new SmartSwitch(quantitySwitch).getCount() + " умных переключателя" );
+        if (batteryCalculator.getCountAllBattery() == 1) {
+            System.out.println("1 умный переключатель или 1 переключатель или 1 кнопка");
+        } else if (batteryCalculator.getCountAllBattery() > 1) {
+            System.out.println(batteryCalculator.getCountAllBattery() + " переключателей или " + batteryCalculator.getCountAllBattery() + " умных переключателей " +
+                    batteryCalculator.getCountAllBattery() + " кнопок");
         }
 
 
+
+
+
+
+
     }
-
-
 
 }

@@ -22,7 +22,7 @@ class WindTurbineTest  {
 class LargeSolarPanelTest {
     @Test
     public static void main(String[] args) {
-        LargeSolarPanel largeSolarPanel = new LargeSolarPanel(3);
+        LargeSolarPanel largeSolarPanel = new LargeSolarPanel(156);
         largeSolarPanel.infoLargeSolarPanel();
     }
         }
